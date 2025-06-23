@@ -104,3 +104,78 @@ CREATE INDEX IdxAge ON student(age);
 📌 Author
 Bright Doro
 Passionate about data, agriculture, and building smart tech solutions.
+
+COMBINING WEEK 3-7 SOLUTIONS TO SHOW MASTERING.
+ SQL Techniques Demonstrated
+
+✅ Table Creation with Constraints
+CREATE TABLE student (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    age INT DEFAULT 18,
+    gender VARCHAR(10) DEFAULT 'Unknown'
+);
+ INSERT:
+INSERT INTO student (name, age, gender) VALUES
+('Ada Lovelace', 21, 'Female'),
+('Chinua Achebe', 20, 'Male');
+
+DELETE:
+DELETE FROM spending WHERE amount < 10;
+
+ALTER:
+ALTER TABLE spending ADD description VARCHAR(100);
+
+TRANSACTION:
+START TRANSACTION;
+UPDATE student SET age = age + 1 WHERE student_id = 1;
+DELETE FROM spending WHERE student_id = 3;
+COMMIT;
+
+Grouping & Summarization
+
+Total Spending by Category:
+SELECT category, SUM(amount) AS total_spent
+FROM spending
+GROUP BY category;
+
+Spending by Student and Category:
+SELECT s.name, sp.category, SUM(sp.amount) AS total_spent
+FROM spending sp
+JOIN student s ON s.student_id = sp.student_id
+GROUP BY s.name, sp.category;
+
+Hobbies Table (4NF):
+CREATE TABLE student_hobbies (
+    hobby_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    hobby VARCHAR(50),
+    FOREIGN KEY (student_id) REFERENCES student(student_id)
+);
+
+Courses and Enrollment Tables (3NF):
+CREATE TABLE course (
+    course_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_name VARCHAR(100)
+);
+
+CREATE TABLE enrollment (
+    enrollment_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    course_id INT,
+    FOREIGN KEY (student_id) REFERENCES student(student_id),
+    FOREIGN KEY (course_id) REFERENCES course(course_id)
+);
+
+Repsql-assignment/
+├── student_spending_normalization.sql
+├── README.mdository Structure:
+
+👨‍💻 Author
+
+Bright DoroAgritech Solution Builder | Data Enthusiast | Smart Farming Advocate
+
+
+
+
+
