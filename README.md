@@ -73,6 +73,34 @@ SELECT * FROM student;
 ✅ Result
 All tasks were successfully executed and validated using the result grid in MySQL Workbench. The final dataset includes 3 students, with correct updates applied.
 
+week 5 Assignment Questions and Answers
+
+ 🔹 Question 1: Create the `student` Table
+
+*TASK:  
+Create a table named `student` with the following:
+- A unique ID for each student
+- `name` (string, max 100 chars, required)
+- `age` (integer, default = 18)
+- `gender` (string, max 10 chars, default = 'Unknown')
+
+*Answer:
+```sql
+CREATE TABLE student (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    age INT DEFAULT 18,
+    gender VARCHAR(10) DEFAULT 'Unknown'
+);
+📘 This structure ensures data integrity, readability, and flexibility.
+
+🔹 Question 2: Create an Index on age
+TASK:
+Add an index named IdxAge to optimize queries filtering by age.
+
+Answer:
+CREATE INDEX IdxAge ON student(age);
+
 📌 Author
 Bright Doro
 Passionate about data, agriculture, and building smart tech solutions.
